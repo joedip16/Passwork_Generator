@@ -18,7 +18,7 @@ function generatePassword() {
 
   var numberCharacters = prompt("How many characters would you like your password to contain?")
   console.log(numberCharacters)
-  if (numberCharacters > 7 && numberCharacters < 128) {
+  if (numberCharacters > 7 && numberCharacters < 129) {
     confirmSpecial = confirm("Do you want speacial characters?")
     confirmNumber = confirm("Do you want numerical characters?")
     confirmUpper = confirm("Do you want uppercase characters")
@@ -34,23 +34,51 @@ if (confirmSpecial === true){
     characters.push(specialChars[i]);
   }
 }
-console.log(specialChars)
+
 if (confirmNumber === true){
   for(var i = 0; i < numbers.length; i++){
     characters.push(numbers[i]);
   }
 }
-console.log(numbers)
-console.log(characters)
-if(confirmUpper)
+
+if(confirmUpper === true){
+  for(var i = 0; i < upperChars.length; i++){
+    characters.push(upperChars[i]);
+  }
+}
+
+  if(confirmLower === true){
+    for(var i = 0; i < lowerChars.length; i++){
+      characters.push(lowerChars[i]);
+  }
+}
+
+if(confirmSpecial === false, confirmNumber === false, confirmUpper === false, confirmLower === false) {
+  alert("You must chose at least one type of character!")
+  return
+}
 
 for(var i = 0; i < numberCharacters; i++){
   var index = Math.floor(Math.random() * characters.length);
   userPassword = userPassword + characters[index];
-}
+  }
+console.log(confirmSpecial)
+console.log(confirmNumber)
+console.log(confirmUpper)
+console.log(confirmLower)
+console.log("--------------")
+console.log(numbers)
+console.log(specialChars)
+console.log(lowerChars)
+console.log(upperChars)
+console.log("--------------")
+console.log(characters)
 console.log(userPassword)
 
+
+
 return userPassword;
+
 
 
   //first pass
@@ -104,4 +132,3 @@ generateBtn.addEventListener("click", writePassword);
 
 
   //function for getting a random element from an array
-
